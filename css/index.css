@@ -1,0 +1,287 @@
+@import url('./base.css');
+
+body {
+    background: #f7f7f7;
+}
+
+.blank-view {
+    width: 750px;
+    height: 88px;
+    background: transparent;
+}
+
+/*  */
+
+#tabbar-view {
+    width: 100%;
+    height: 88px;
+    background: #fff;
+    position: fixed;
+    left: auto;
+    right: auto;
+    z-index: 9;
+    top: 0;
+    border-bottom: 1px solid #c7c7c7;
+}
+
+.tabbar {
+    width: 100%;
+    height: 88px;
+}
+
+.tabbar-for {
+    width: 100%;
+    height: 88px;
+    background: #fff;
+}
+
+.tabbar-item {
+    width: 100%;
+    height: 88px;
+    line-height: 88px;
+    font-size: 30px;
+    color: #474747;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.tabbar-item-on {
+    color: #3d6fff;
+    position: relative;
+}
+
+.tabbar-item-on::before {
+    content: " ";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 54px;
+    height: 6px;
+    background: #3d6fff;
+    border-radius: 3px;
+}
+
+.tabbar-long {
+    display: -webkit-box;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 88px;
+    background: #fff;
+}
+
+.tabbar-for-long {
+    width: 174px;
+    height: 88px;
+    background: #fff;
+}
+
+/*  */
+.swiper,
+.swiper-item,
+.swiper-img {
+    width: 750px;
+    height: 300px;
+}
+
+/*  */
+.tab {
+    width: 750px;
+    height: 88px;
+    position: fixed;
+    left: auto;
+    right: auto;
+    bottom: 0;
+    background: #f7f7fa;
+    border-top: 2px solid #c7c7c7;
+    z-index: 199;
+}
+
+.tab .tab-item {
+    width: 375px;
+    height: 88px;
+}
+
+.tab .tab-item > img {
+    width: 48px;
+    height: 48px;
+}
+
+.tab .tab-item > span {
+    font-size: 24px;
+    color: #999;
+}
+
+/*  */
+.picker-view {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 750px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 299;
+    display: none;
+}
+
+.picker-view .picker-op {
+    font-size: 26px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 360px;
+    background: #fff;
+    z-index: 303;
+    height: 88px;
+    border-bottom: 2px solid #c7c7c7;
+}
+
+.picker-op .cancel {
+    color: #888888;
+    height: 60px;
+    width: 100px;
+}
+
+.picker-op .sure {
+    color: #1aad19;
+    height: 60px;
+    width: 100px;
+}
+
+.picker-view .picker {
+    height: 360px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 303;
+}
+
+.physique-swiper {
+    width: 750px;
+    height: 360px;
+    overflow: scroll;
+    overflow-y: visible;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.physique-swiper .physique-swiper-item {
+    width: 750px;
+    height: 60px !important;
+    line-height: 60px;
+    font-size: 28px;
+    color: #666;
+    text-align: center;
+
+}
+
+.physique-swiper .physique-swiper-item-on {
+    border-top: 1px solid #9e9e9e;
+    border-bottom: 1px solid #9e9e9e;
+    color: #1aad19;
+}
+
+.filter {
+    width: 692px;
+    height: 56px;
+    background: #fff;
+    border-radius: 28px;
+    font-size: 24px;
+    color: #9e9e9e;
+    letter-spacing: 0;
+    line-height: 24px;
+    box-sizing: border-box;
+    padding: 0 34px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+/*  */
+.food-view {
+    margin: 20px 0 0px;
+    width: 750px;
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+
+.page-end {
+    margin: 0 0 100px;
+}
+
+.food {
+    width: 334px;
+    height: 498px;
+    overflow: hidden;
+    background: #fff;
+    display: inline-block;
+    border-radius: 10px;
+    margin-bottom: 22px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.food .physique {
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: rgba(255, 129, 79, 0.6);
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 0;
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    border-radius: 4px;
+}
+
+.food .image {
+    width: 334px;
+    height: 334px;
+    display: block;
+    margin-left: 0px;
+}
+
+.food .title {
+    font-size: 30px;
+    color: #383838;
+    letter-spacing: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 85px;
+    padding: 20px;
+    font-weight: 600;
+}
+
+.food .tag {
+    margin-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 24px;
+    color: #878787;
+    letter-spacing: 0;
+    line-height: 36px;
+    padding: 0 20px;
+    height: 72px;
+}
+
+.more {
+    background: #fff;
+    font-size: 16px;
+    color: #999;
+    text-align: center;
+    padding: 16px 0;
+}
+
+.no-more {
+    font-size: 22px;
+    color: #999;
+    background: #f7f7f7;
+    text-align: center;
+    padding: 16px 0;
+    display: none;
+}

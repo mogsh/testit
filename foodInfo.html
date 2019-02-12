@@ -1,0 +1,148 @@
+<!DOCTYPE html >
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="name=Jacky"/>
+    <!--<meta http-equiv="Pragma" content="no-cache">-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache">-->
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <title>望舌问膳-详情</title>
+    <link rel="stylesheet" href="./css/foodInfo.css?v=1.0.1">
+    <script src="./js/jackyViewport.js"></script>
+    <script src="https://static.8guess.com/js/zepto.min.js"></script>
+    <link rel="stylesheet" href="https://static.8guess.com/js/swiper.min.css">
+</head>
+
+<body>
+
+
+<div id="info-view">
+
+</div>
+
+<!-- content -->
+<div class="vhtml">
+    <div id="html-view"></div>
+</div>
+
+<!-- back -->
+<div flex="main:center cross:center" class="back" id="back">
+    <i class="iconfont  icon-xiangyou icon-left icon-left-fs"></i>
+</div>
+
+
+</body>
+
+</html>
+<!-- info模板 -->
+<script type="text/template" id="info">
+    <!-- banner -->
+    <div class="banner-view">
+        <div class="physique">{{infoData.physique}}</div>
+        <img class="img" src="{{infoData.bannerUrl}}" alt="">
+        <div flex="main:left" class="tag-view flex-wrap">
+            {{each infoData.tag as item index}}
+            <div class="tag">{{item}}</div>
+            {{/each}}
+        </div>
+    </div>
+    <!-- detail -->
+    <div class="detail-view bsbb">
+        <div class="title bsbb">{{infoData.cname}}</div>
+        <div class="descript bsbb">{{infoData.desc}}</div>
+    </div>
+    <!-- descript -->
+    <div class="recipe-view">
+        <div class="line-title">主食材</div>
+        <div flex="main:left" class="recipe flex-wrap">
+            {{each infoData.mainKey as item index}}
+            <div flex="main:justify" class="item mb30">
+                <span>{{item}}</span>
+                <span class="text-right">{{infoData.mainVal[index]}}</span>
+            </div>
+            {{/each}}
+        </div>
+        <div class="line-title">辅料</div>
+        <div flex="main:left" class="recipe flex-wrap">
+            {{each infoData.helpKey as item index}}
+            <div flex="main:justify" class="item mb30">
+                <span>{{item}}</span>
+                <span class="text-right">{{infoData.helpVal[index]}}</span>
+            </div>
+            {{/each}}
+        </div>
+        <div class="line-title">制作步骤</div>
+    </div>
+</script>
+<script type="text/javascript" src="https://static.8guess.com/js/swiper.min.js"></script>
+<script type="text/javascript" src="https://static.8guess.com/js/template.js"></script>
+<script src="./js/jacky.js"></script>
+<script src="./js/base.js"></script>
+<script type="text/javascript">
+    var page = {
+        id: '',
+        preCate: 0,
+        pickPhysique: "",
+        moreLoading: true,//加载数据中
+    }
+
+    Jacky.util.landscape({color: '#e02e24'});
+
+    $(function () {
+        page.id = GetUrlParam('id')
+        console.debug('id==', page.id)
+
+        // 获取详情
+        getInfo()
+    });
+
+
+    // 获取详情
+    function getInfo() {
+        $.ajax({
+            url: config.baseUrl + "/tongue/intf/tongue/getCookBooksInfo.jsp",
+            type: "POST",
+            data: {cId: page.id},
+            success: function (res) {
+                console.debug('获取详情==', res)
+                var data = res.data
+                data.tag = data.effect.split(",");
+                var mainKey = [],
+                    mainVal = [],
+                    helpKey = [],
+                    helpVal = [];
+                for (let key in data.mainIngredient) {
+                    mainKey.push(key);
+                    mainVal.push(data.mainIngredient[key]);
+                }
+                for (let key in data.accessories) {
+                    helpKey.push(key);
+                    helpVal.push(data.accessories[key]);
+                }
+                data.mainKey = mainKey;
+                data.mainVal = mainVal;
+                data.helpKey = helpKey;
+                data.helpVal = helpVal;
+
+                var html = template('info', {infoData: data})
+                $("#info-view").append(html);
+                $("#html-view").html(data.steps)
+            }
+        });
+    }
+
+    //  返回
+    $('#back').on('click',function () {
+        history.go(-1) //是返回上一页
+        // history.back()
+        // window.location.go(-1) //是刷新上一页
+
+    })
+
+
+</script>

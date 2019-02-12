@@ -1,0 +1,128 @@
+@import url('./base.css');
+
+body {
+    background: #fff;
+}
+
+/*  */
+.banner-view {
+    width: 750px;
+    height: 420px;
+    position: relative;
+}
+
+.banner-view .physique {
+    width: 128px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: rgba(255, 129, 79, 0.6);
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 0;
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    border-radius: 4px;
+}
+
+.banner-view .img {
+    width: 750px;
+    height: 420px;
+}
+
+.banner-view .tag-view {
+    width: 100%;
+    padding: 15px 0 0;
+    background: rgba(58, 56, 56, 0.42);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+.banner-view .tag-view .tag {
+    border: 2px solid #fff;
+    border-radius: 2px;
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 0;
+    width: 146px;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-left: 30px;
+    margin-bottom: 15px;
+}
+
+/*  */
+.detail-view {
+    width: 750px;
+    padding: 10px 30px;
+}
+
+.detail-view .title {
+    width: 100%;
+    padding: 30px 0;
+    font-size: 48px;
+    color: #474747;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.descript {
+    width: 100%;
+    font-size: 30px;
+    color: #666;
+    letter-spacing: 0.8px;
+    line-height: 45px;
+}
+
+/*  */
+.recipe-view {
+    width: 750px;
+}
+
+.recipe-view .line-title {
+    width: 100%;
+    text-indent: 30px;
+    font-size: 30px;
+    color: #474747;
+    height: 40px;
+    padding: 30px 0;
+    font-weight: 600;
+    position: relative;
+    letter-spacing: 0.8px;
+}
+
+.recipe-view .line-title::before {
+    content: " ";
+    width: 10px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: linear-gradient(-180deg, #70a8ff 0%, #3d6fff 100%);
+}
+
+.recipe-view .recipe {
+    width: 750px;
+    overflow: hidden;
+}
+
+.recipe-view .recipe .item {
+    width: 315px;
+    font-size: 30px;
+    color: #666;
+    margin-left: 60px;
+    box-sizing: border-box;
+    padding-right: 60px;
+}
+
+.vhtml{
+    width: 750px;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
