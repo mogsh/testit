@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-    <meta http-equiv="Page-Enter"  contect="revealTrans(duration=1.0,transition=23)">
+    <meta http-equiv="Cache-Control" content="max-age=300" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -150,15 +150,9 @@
     Jacky.util.landscape({color: '#e02e24'});
 
     $(function () {
-        console.debug(111,history)
-        console.debug(111,document.referrer)
-
-
-        // 获取分类
-        getCate()
-        // 获取Banner
-        getBanner()
-
+        console.debug(111, history)
+        console.debug(111, document.referrer)
+        init()
         // 滚动加载数据
         $(window).scroll(function () {
             var b = $(window).scrollTop(),
@@ -173,6 +167,12 @@
 
     });
 
+    function init() {
+        // 获取分类
+        getCate()
+        // 获取Banner
+        getBanner()
+    }
 
     // 获取分类
     function getCate() {

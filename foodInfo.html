@@ -3,15 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="name=Jacky"/>
-    <!--<meta http-equiv="Pragma" content="no-cache">-->
-    <!--<meta http-equiv="Cache-Control" content="no-cache">-->
-    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <meta http-equiv="Cache-Control" content="max-age=300"/>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no"/>
     <meta name="format-detection" content="email=no"/>
-    <title>望舌问膳-详情</title>
+    <title>望舌问膳-食谱详情</title>
     <link rel="stylesheet" href="./css/foodInfo.css?v=1.0.1">
     <script src="./js/jackyViewport.js"></script>
     <script src="https://static.8guess.com/js/zepto.min.js"></script>
@@ -34,7 +33,6 @@
 <div flex="main:center cross:center" class="back" id="back">
     <i class="iconfont  icon-xiangyou icon-left icon-left-fs"></i>
 </div>
-
 
 </body>
 
@@ -137,11 +135,8 @@
     }
 
     //  返回
-    $('#back').on('click',function () {
-        history.go(-1) //是返回上一页
-        // history.back()
-        // window.location.go(-1) //是刷新上一页
-
+    $('#back').on('click', function () {
+        history.go(-1)
     })
 
 
