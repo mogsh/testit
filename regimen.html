@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-    <meta http-equiv="Cache-Control" content="max-age=300" />
+    <meta http-equiv="Cache-Control" content="max-age=300"/>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -71,7 +71,7 @@
         <!--swiper模板-->
         <script type="text/template" id="swiperBanner">
             {{each swiperList as item index}}
-            <div class="swiper-slide swiper-item">
+            <div class="swiper-slide swiper-item click-swiper-item" data-detailid="{{item.id}}">
                 <img class="swiper-img" src="{{item.faceUrl}}">
             </div>
             {{/each}}
@@ -257,6 +257,13 @@
     // 查看详情
     $('#articleListView .click-article').live('click', function (e) {
         window.location.href = './regimenInfo.html?id=' + $(this).attr("data-id")
+    })
+
+    // 查看详情   banner
+    $('#swiperWrapper .click-swiper-item').live('click', function (e) {
+        if ($(this).attr("data-detailid")) {
+            window.location.href = './regimenInfo.html?id=' + $(this).attr("data-detailid")
+        }
     })
 
     // 开启加载更多

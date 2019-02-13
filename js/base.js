@@ -6,12 +6,26 @@ const config = {
 
 /* 通用方法 */
 
-//获取URL参数
+//获取当前URL参数
 function GetUrlParam(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = encodeURI(window.location.search).substr(1).match(reg);
     if (r != null) return unescape(r[2]);
     return null;
+}
+
+// 获取链接中的参数
+function getQueryParams(url) {
+    let params = {}
+    let queryString = url.split('?')[1];
+    if (!queryString) return params
+    let paramsArray = queryString.split('&')
+    for (let i = 0; i < paramsArray.length; i++) {
+        let _key = paramsArray[i].split('=')[0]
+        let _val = paramsArray[i].split('=')[1]
+        params[_key] = _val
+    }
+    return params
 }
 
 /* 模板数据处理 */

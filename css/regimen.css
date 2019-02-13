@@ -72,7 +72,7 @@ body {
     -webkit-overflow-scrolling: touch;
     height: 88px;
     background: #fff;
-    position: sticky;
+    position: fixed;
     left: auto;
     right: auto;
     z-index: 9;

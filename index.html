@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
-    <meta http-equiv="Cache-Control" content="max-age=300" />
+    <meta http-equiv="Cache-Control" content="max-age=300"/>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -71,7 +71,7 @@
         <!--swiper模板-->
         <script type="text/template" id="swiperBanner">
             {{each swiperList as item index}}
-            <div class="swiper-slide swiper-item">
+            <div class="swiper-slide swiper-item click-swiper-item" data-detailid="{{item.detailId}}">
                 <img class="swiper-img" src="{{item.img}}">
             </div>
             {{/each}}
@@ -200,6 +200,13 @@
             success: function (res) {
                 console.debug('Banner==', res)
                 var data = res.data
+                if (data.length > 0) {
+                    for (let i = 0; i < data.length; i++) {
+                        if (data[i].path) {
+                            data[i].detailId = getQueryParams(data[i].path)['id']
+                        }
+                    }
+                }
                 var html = template('swiperBanner', {swiperList: data});
                 $("#swiperWrapper").append(html);
                 var banner = new Swiper('#swiperContainer', {
@@ -261,6 +268,13 @@
     // 查看详情
     $('#foodListView .click-food').live('click', function (e) {
         window.location.href = './foodInfo.html?id=' + $(this).attr("data-id")
+    })
+
+    // 查看详情   banner
+    $('#swiperWrapper .click-swiper-item').live('click', function (e) {
+        if ($(this).attr("data-detailid")) {
+            window.location.href = './foodInfo.html?id=' + $(this).attr("data-detailid")
+        }
     })
 
     // 打开选择体质弹窗

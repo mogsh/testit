@@ -24,8 +24,8 @@
 
 </div>
 
-<!-- content -->
-<div class="vhtml">
+<!--content-->
+<div class="vhtml vhtml-fs">
     <div id="html-view"></div>
 </div>
 
@@ -81,6 +81,7 @@
 <script type="text/javascript" src="https://static.8guess.com/js/template.js"></script>
 <script src="./js/jacky.js"></script>
 <script src="./js/base.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script type="text/javascript">
     var page = {
         id: '',
@@ -136,7 +137,12 @@
 
     //  返回
     $('#back').on('click', function () {
-        history.go(-1)
+        var referrer = document.referrer
+        if (referrer === '') {
+            window.location.href = './index.html'
+        } else {
+            history.go(-1)
+        }
     })
 
 

@@ -23,7 +23,7 @@
 </div>
 
 <!-- content -->
-<div class="vhtml">
+<div class="vhtml vhtml-fs">
     <div id="html-view"></div>
 </div>
 
@@ -217,7 +217,12 @@
 
     //  返回
     $('#back').on('click', function () {
-        history.go(-1)
+        var referrer = document.referrer
+        if (referrer === '') {
+            window.location.href = './regimen.html'
+        } else {
+            history.go(-1)
+        }
     })
 
 
