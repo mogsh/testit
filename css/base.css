@@ -130,3 +130,7 @@ a:hover {
 .touch-none {
     touch-action: none;
 }
+
+.ios-cursor {
+    cursor: pointer;
+}
