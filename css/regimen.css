@@ -32,7 +32,6 @@ body {
     right: auto;
     z-index: 9;
     top: 0;
-    cursor: pointer;
 }
 
 .tabbar-for {
@@ -85,6 +84,7 @@ body {
     width: 174px;
     height: 88px;
     background: #fff;
+    cursor: pointer;
 }
 
 /*  */
