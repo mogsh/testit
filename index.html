@@ -41,7 +41,7 @@
         {{if arrLen(tabList)<=4}}
         <div flex="main:left cross:center" class="tabbar">
             {{each tabList as item index}}
-            <div class="tabbar-for click-tab" flex="main:center cross:center" data-index="{{index}}"
+            <div class="tabbar-for click-tab ios-cursor" flex="main:center cross:center" data-index="{{index}}"
                  data-id="{{item.id}}">
                 <div class="tabbar-item ">
                     {{item.cname}}
@@ -53,7 +53,7 @@
         <!-- length>4 -->
         <div flex="main:left cross:center" class="tabbar-long">
             {{each tabList as item index}}
-            <div class="tabbar-for-long click-tab" flex="main:center cross:center" data-index="{{index}}"
+            <div class="tabbar-for-long click-tab ios-cursor" flex="main:center cross:center" data-index="{{index}}"
                  data-id="{{item.id}}">
                 <div class="tabbar-item">
                     {{item.cname}}
@@ -71,7 +71,7 @@
         <!--swiper模板-->
         <script type="text/template" id="swiperBanner">
             {{each swiperList as item index}}
-            <div class="swiper-slide swiper-item click-swiper-item" data-detailid="{{item.detailId}}">
+            <div class="swiper-slide swiper-item click-swiper-item ios-cursor" data-detailid="{{item.detailId}}">
                 <img class="swiper-img" src="{{item.img}}">
             </div>
             {{/each}}
@@ -113,7 +113,7 @@
 <!--食谱列表模版 -->
 <script type="text/template" id="foodList">
     {{each foodList as item index}}
-    <div flex="dir:top main:justify cross:center" class="food click-food" data-id="{{item.id}}">
+    <div flex="dir:top main:justify cross:center" class="food click-food ios-cursor" data-id="{{item.id}}">
         <div class="physique">{{item.physique}}</div>
         <img src="{{item.bannerUrl}}" class="image" alt="">
         <div class="title">{{item.cname}}</div>

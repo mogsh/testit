@@ -71,7 +71,7 @@
         <!--swiper模板-->
         <script type="text/template" id="swiperBanner">
             {{each swiperList as item index}}
-            <div class="swiper-slide swiper-item click-swiper-item" data-detailid="{{item.id}}">
+            <div class="swiper-slide swiper-item click-swiper-item ios-cursor" data-detailid="{{item.id}}">
                 <img class="swiper-img" src="{{item.faceUrl}}">
             </div>
             {{/each}}
@@ -87,7 +87,7 @@
 <!-- 文章列表模版 -->
 <script type="text/template" id="articleList">
     {{each articleList as item index}}
-    <div flex="" class="list-item click-article" data-id="{{item.id}}">
+    <div flex="" class="list-item click-article ios-cursor" data-id="{{item.id}}">
         <div flex="dir:top main:justify" class="desc-view">
             <div class="title ell2">{{item.title}}</div>
             <div class="info">
