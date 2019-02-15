@@ -69,8 +69,11 @@ body {
 
 .tabbar-long {
     display: -webkit-box;
+    width: 100%;
+    white-space: nowrap;
     overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
+    float: left;
+    overflow-y: hidden;
     height: 88px;
     background: #fff;
     position: fixed;
@@ -84,7 +87,6 @@ body {
     width: 174px;
     height: 88px;
     background: #fff;
-    cursor: pointer;
 }
 
 /*  */
