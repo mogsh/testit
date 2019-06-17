@@ -1,138 +1,81 @@
-@import url("//at.alicdn.com/t/font_1037015_3u26273e4yw.css");
-@import url("./flex.css");
-@import url("./common.css");
+/*公共样式*/
 
-/* 圆形 */
-
-.br {
-    border-radius: 50%;
-}
-
-.por {
-    position: relative;
-}
-
-/* 浮动 */
-
-.fl {
-    float: left
-}
-
-.fr {
-    float: right
-}
-
-.bgfff {
-    background: #fff;
-}
-
-.bsbb {
+/*重置*/
+*,
+::before,
+::after{
+    padding: 0;
+    margin: 0;
+    /*设置盒模型*/
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /*去除移动端特有的单击时的高亮的背景色*/
+    -webkit-tap-highlight-color: transparent;
 }
-
-.text-right {
-    text-align: right;
+body{
+    height:100%;
+    /*sans-serif:系统默认字体*/
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 13px;
 }
-
-.flex-wrap {
-    -webkit-flex-wrap: wrap;
-    -moz-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    -o-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-
-/* 字超出省略 */
-
-.ell1 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.ell2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-
-.icon-down {
-    transform: rotate(90deg);
-}
-
-.icon-left {
-    transform: rotate(180deg);
-}
-
-.icon-left-fs {
-    font-size: 28px;
-    font-weight: 600;
-}
-
-a:link {
-    color: #000000;
+a{
     text-decoration: none;
+    color: #666;
 }
-
-a:visited {
-    color: #000000;
+a:hover{
     text-decoration: none;
+    color: #666;
+}
+ul{
+    list-style: none;
+}
+input,button{
+    /*清除文本框默认的虚线边框*/
+    outline: none;
+    /*清除边框*/
+    border: none;
 }
 
-a:hover {
-    color: #999999;
-    text-decoration: none;
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+/*清除浮动*/
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0px;
+    clear: both;
+    visibility: hidden;
 }
 
-.vhtml-fs {
-    font-size: 28px;
+
+
+@font-face {font-family: "iconfont";
+    src: url('../font/iconfont.eot?t=1526024825082'); /* IE9*/
+    src: url('../font/iconfont.eot?t=1526024825082#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAbkAAsAAAAACjwAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFZW7khcY21hcAAAAYAAAABuAAABsgBC065nbHlmAAAB8AAAAugAAAPcAje7BmhlYWQAAATYAAAALwAAADYRVhrvaGhlYQAABQgAAAAcAAAAJAfeA4ZobXR4AAAFJAAAABMAAAAUE+kAAGxvY2EAAAU4AAAADAAAAAwB3gLKbWF4cAAABUQAAAAfAAAAIAEWAGpuYW1lAAAFZAAAAUUAAAJtPlT+fXBvc3QAAAasAAAANwAAAEgslYvSeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2Bk/s04gYGVgYOpk+kMAwNDP4RmfM1gxMjBwMDEwMrMgBUEpLmmMDgwVDzLZ27438AQw9zA0AAUZgTJAQAskgzeeJzFkMEJgEAMBCfeKSKW4dMifFiOIPiy4rShexcfWoEbJiRLICFACyQxiwx2YBRtcq36iaH6mUX9QE+jOH3y1ffrkveuQ6a5iFJnzWuHdfwm+2/1V2PNy9Pp45wPOtGnoPi+BvodvgekG31WFrgAAHicVVJLaxNRFL7nXmfymty0k8xMHk3TSdqMJTWPyQuMSWwUWkUSRSyIWnHhpqAoLrJRWpAUF1m4ii4CLUUQ7MKFFjcKLoT6A0RUBN8ryaKrbszonTy0Dodzz/MbzncO4hD6/YU8J17kRvtRCh1FJxECPgZhioOgapk4joGkcpLioUSLaKolEo6TIihh3iPruUxU4S28CyiMQ1rVc1oca5DNlHABdDkI4Av4T4tTYyK5C3avNt4wjuMNkEKRMVfpgHFspuzRJ9zWuiCKPlFsWnmOs2K8z0XhiiLbOJudNx5wLr/0PDSNQyD4NP+Js86JgHjpTuZqcEqxAaysgDswQR+WR/2jTG76Zbfos4w4rV6/MzLpgfp3h9ctBKPfEPvMWV+Ra+QQciAPCqM4OshmjYNWgvw4KBQ0Cv2hiBbFgyiPLYSCRRaVnJiPg1tKK2o+nY0QlWBIzWI8m0pWACrJyURiLpGYFJQPLnLvxvX7hH5UHJdXieNJIvnUTlbPlw93V8vJWg2/q8EzqKR0s1lPVV5Dcj6RmE92110SHGnX1whZq7eNFxLukObSsvEjn4fA8lKz+z7U6YSMNzDDZrGwWR6Rt2QBOZEPTaMsmkVVdM7cHbLISMmhPFsd2TMcyWaiYT4InhDIJaxNRcwNsjWxcdU9NvRqGAtFYDz0n34Io21jl+PAtr0NNm6usbm4tcNxO1s9vS6IAt/mRwTgDClmEwSbqfDGX9NoMiUyp/+QM5yxuz0EXNxszP1aGWIxDY+/mo0/bXybA2GE3zB7hmK87EOaCi/8s4c7/kzWSKh3z0V0Cl1gwQjjIZvJmSfJuEjrsoeHcLQIjJueE2MHbJE8vGoGWW0kHM3kCmYtC5KBx4oHGIxM1YyxizeRbrcKNaAyBT3asruo0XFQqBWY6bK3ojpQghy9nINSR6tQxfRW3zRzMsXVi4Zq+vCJ6RCuFv7LErNnL/ww0/9FtzvIDMChwXwmjIo/GM23d3icY2BkYGAAYuHaJbfi+W2+MnCzMIDAdensSgT9fxULA3MYkMvBwAQSBQAWqQl7AHicY2BkYGBu+N/AEMPCAAJAkpEBFbACAEcLAm54nGNhYGBgfsnAwMKAwAAOmwD9AAAAAAAAdgDcAWgB7nicY2BkYGBgZYhjYGcAASYg5gJCBob/YD4DABKgAYEAeJxlj01OwzAQhV/6B6QSqqhgh+QFYgEo/RGrblhUavdddN+mTpsqiSPHrdQDcB6OwAk4AtyAO/BIJ5s2lsffvHljTwDc4Acejt8t95E9XDI7cg0XuBeuU38QbpBfhJto41W4Rf1N2MczpsJtdGF5g9e4YvaEd2EPHXwI13CNT+E69S/hBvlbuIk7/Aq30PHqwj7mXle4jUcv9sdWL5xeqeVBxaHJIpM5v4KZXu+Sha3S6pxrW8QmU4OgX0lTnWlb3VPs10PnIhVZk6oJqzpJjMqt2erQBRvn8lGvF4kehCblWGP+tsYCjnEFhSUOjDFCGGSIyujoO1Vm9K+xQ8Jee1Y9zed0WxTU/3OFAQL0z1xTurLSeTpPgT1fG1J1dCtuy56UNJFezUkSskJe1rZUQuoBNmVXjhF6XNGJPyhnSP8ACVpuyAAAAHicY2BigAAuBuyAlZGJkZmRhZGVkY2BsYI9JTMvvTw1k6M4I7MqIz8vnbU4MT83kYEBAIb7CRoA') format('woff'),
+    url('../font/iconfont.ttf?t=1526024825082') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg?t=1526024825082#iconfont') format('svg'); /* iOS 4.1- */
 }
 
-/* // 重置富文本中的图片样式 */
-.vhtml img {
-    width: 100% !important;
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* //   查看更多的悬浮按钮 */
-.look-more-view .img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 82px;
-    height: 82px;
-}
+.icon-dingwei:before { content: "\e644"; }
 
-.look-more-view {
-    position: fixed;
-    right: 32px;
-    bottom: 280px;
-    overflow: hidden;
-    width: 76px;
-    height: 76px;
-}
+.icon-shizhong:before { content: "\e66f"; }
 
-/* // 返回 */
-.back {
-    position: fixed;
-    right: 32px;
-    bottom: 180px;
-    overflow: hidden;
-    width: 72px;
-    height: 72px;
-    background: #5581ff;
-    border-radius: 50%;
-    color: #fff;
-}
+.icon-saoma:before { content: "\e624"; }
 
-.touch-none {
-    touch-action: none;
-}
 
-/* 解决 模板插入 ios 点击无效 */
-.ios-cursor {
-    cursor: pointer;
-}
 

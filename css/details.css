@@ -1,0 +1,291 @@
+body {
+  background-color: #F5F5F5;
+}
+.e_layout {
+  width: 100%;
+  max-width: 770px;
+  min-width: 320px;
+  margin: 0 auto;
+  background-color: #F5F5F5;
+}
+.e_layout .e_head {
+  height: 2.3rem;
+  line-height: 2.3rem;
+  background-color: #F7F7F7;
+  text-align: center;
+  border-bottom: 1px solid #d9d9d9;
+}
+.e_layout .e_head > h1 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.e_layout .theBall {
+  background-color: #fff;
+}
+.e_layout .theBall ul {
+  padding: .5rem;
+}
+.e_layout .theBall ul li {
+  width: 33.33%;
+  float: left;
+}
+.e_layout .theBall ul li a {
+  display: block;
+  text-align: center;
+}
+.e_layout .theBall ul li a img {
+  width: 2rem;
+}
+.e_layout .theBall ul li a p {
+  margin-top: .2rem;
+  color: #000;
+  font-size: .7rem;
+}
+.e_layout .e_contont {
+  padding: 1rem 1rem 0;
+}
+.e_layout .e_contont .e_box {
+  width: 100%;
+  background-color: #FAFAFA;
+  -webkit-border-radius: .4rem;
+  -moz-border-radius: .4rem;
+  border-radius: .4rem;
+  box-shadow: #eeeeee 4px 4px 4px 1px;
+}
+.e_layout .e_contont .e_box .e_saide {
+  text-align: center;
+  padding-top: 1.5rem;
+  margin: 0 1rem;
+  border-bottom: 1px dashed #9C9C9C;
+}
+.e_layout .e_contont .e_box .e_saide > img {
+  border-radius: 50%;
+  margin-bottom: .5em;
+}
+.e_layout .e_contont .e_box .e_saide > p {
+  font-size: .8rem;
+}
+.e_layout .e_contont .e_box .e_saide > p:last-of-type {
+  color: #9C9C9C;
+  margin: .5rem 0;
+}
+.e_layout .e_contont .e_box .e_list {
+  margin: 0 1rem 1rem;
+  padding: 1rem 0;
+}
+.e_layout .e_contont .e_box .e_list > li {
+  margin-bottom: 1rem;
+}
+.e_layout .e_contont .e_box .e_list > li:last-of-type {
+  margin: 0;
+}
+.e_layout .e_contont .e_box .e_list > li > p {
+  color: #626262;
+  font-size: .8rem;
+}
+.e_layout .e_contont .e_box .e_list > li > p:last-of-type {
+  color: #B6B6B6;
+  font-size: .7rem;
+  margin-top: 1px;
+}
+.e_layout .xuanfu {
+  position: fixed;
+  right: 8px;
+  bottom: 65px;
+  animation: music-move 0.7s 0.5s infinite alternate ease-in-out;
+}
+.e_layout .xuanfu > img {
+  width: 39px;
+}
+.e_layout .ios_layer {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 120;
+}
+.e_layout .ios_layer > .ios_box {
+  position: absolute;
+  width: 85%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.e_layout .ios_layer > .ios_box > .close_ios {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 0;
+  top: -55px;
+}
+.e_layout .ios_layer > .ios_box > div {
+  width: 100%;
+  height: 16rem;
+  background: url("https://img.bazhuay.com/common/images/2018/10/layer_20181019154538.png") no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  text-align: center;
+}
+.e_layout .ios_layer > .ios_box > div > h3 {
+  color: #612700;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: .5rem;
+}
+.e_layout .ios_layer > .ios_box > div > p {
+  color: #612700;
+  font-size: 19px;
+}
+.e_layout .ios_layer > .ios_box > button {
+  width: 75%;
+  height: 43px;
+  background-color: #FF8A40;
+  color: #fff;
+  font-size: 19px;
+  border: none;
+  margin: 20px auto 0 auto;
+  display: block;
+  border-radius: 6px;
+}
+.e_layout .customerPopup {
+  display: none;
+  z-index: 999999;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.e_layout .customerPopup .customerBox {
+  width: 15rem;
+  background-image: url("https://img.bazhuay.com/common/images/2018/09/cusbgs_20180905105438.png?imageView2/2/w/100");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-bottom: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.e_layout .customerPopup .customerBox .cusTit {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+  background-image: url("https://img.bazhuay.com/common/images/2018/09/cusTit_20180905105536.png?imageView2/2/w/100");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.e_layout .customerPopup .customerBox .cusTit h3 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.e_layout .customerPopup .customerBox .cusCont {
+  margin-top: 1rem;
+}
+.e_layout .customerPopup .customerBox .cusCont .cusText {
+  color: #000;
+  font-size: 0.8rem;
+}
+.e_layout .customerPopup .customerBox .cusCont .cusText .serweixin {
+  padding: 0 1rem;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+}
+.e_layout .customerPopup .customerBox .cusCont .cusText .serweixin .yptms {
+  height: 0.6rem;
+  background-color: #FFD1C5;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding-left: 0.3rem;
+}
+.e_layout .customerPopup .customerBox .cusCont .proces {
+  width: 9.5rem;
+  margin-top: 0.5rem;
+}
+.e_layout .customerPopup .customerBox .cusCont a {
+  width: 10rem;
+  height: 2rem;
+  line-height: 2rem;
+  display: inline-block;
+  border-radius: 5rem;
+  color: #fff;
+  font-size: 0.8rem;
+  background-color: #FF3B53;
+  margin-top: 0.8rem;
+}
+.e_layout .customerPopup .customerBox .closeCustomer {
+  width: 1.3rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.e_layout .e_bottom {
+  height: 2.3rem;
+  line-height: 2.3rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+.e_layout .e_bottom > button,
+.e_layout .e_bottom > a {
+  width: 50%;
+  height: 100%;
+  float: left;
+  color: #fff;
+  font-size: 15px;
+}
+.e_layout .e_bottom > button {
+  background-color: #FF5B3A;
+}
+.e_layout .e_bottom > a {
+  background-color: #FFA000;
+}
+.e_layout .securityBox {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+.e_layout .securityBox > img {
+  width: 100%;
+}
+/*200元红包摇一摇*/
+@keyframes music-move {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  33% {
+    -webkit-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+  66% {
+    -webkit-transform: rotate(10deg);
+    transform: rotate(10deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}

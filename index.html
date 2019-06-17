@@ -1,324 +1,514 @@
-<!DOCTYPE html >
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="This is my page">
-    <meta http-equiv="Cache-Control" content="max-age=300"/>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="format-detection" content="email=no"/>
-    <title>望舌问膳</title>
-    <link rel="stylesheet" href="./css/index.css?v=1.0.1">
-    <script src="./js/jackyViewport.js"></script>
-    <script src="https://static.8guess.com/js/zepto.min.js"></script>
-    <link rel="stylesheet" href="https://static.8guess.com/js/swiper.min.css">
-</head>
-
-<body>
-
-<!---->
-<div class="blank-view"></div>
-
-<!-- tab -->
-<div flex="main:left cross:center" class="tab">
-    <div flex="dir:top main:center cross:center" class="tab-item">
-        <img src="./images/tab2on.png" alt="">
-        <span style="color:#3d6fff">食谱</span>
-    </div>
-    <a flex="dir:top main:center cross:center" class="tab-item" href="./regimen.html">
-        <img src="./images/tab3.png" alt="">
-        <span>养生</span>
-    </a>
-</div>
-
-<!-- tabBar -->
-<div id="tabbar-view">
-    <!--tabBar模板-->
-    <script type="text/template" id="tabBar">
-        {{if arrLen(tabList)<=4}}
-        <div flex="main:left cross:center" class="tabbar">
-            {{each tabList as item index}}
-            <div class="tabbar-for click-tab ios-cursor" flex="main:center cross:center" data-index="{{index}}"
-                 data-id="{{item.id}}">
-                <div class="tabbar-item ">
-                    {{item.cname}}
-                </div>
-            </div>
-            {{/each}}
-        </div>
-        {{else}}
-        <!-- length>4 -->
-        <div flex="main:left cross:center" class="tabbar-long">
-            {{each tabList as item index}}
-            <div class="tabbar-for-long click-tab ios-cursor" flex="main:center cross:center" data-index="{{index}}"
-                 data-id="{{item.id}}">
-                <div class="tabbar-item">
-                    {{item.cname}}
-                </div>
-            </div>
-            {{/each}}
-        </div>
-        {{/if}}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="author" content="name=Jacky" />
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta http-equiv="Expires" content="0">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>快递直通车</title>
+		<link rel="stylesheet" href="./css/base.css">
+		<link rel="stylesheet" href="./css/express.css?v=6">
+		<!--百度统计-->
+		<script>
+			var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?a6be558a8704efc43a8853e49eb2d40d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
     </script>
-</div>
 
-<!-- Banner -->
-<div class="swiper-container" id="swiperContainer">
-    <div class="swiper-wrapper" id="swiperWrapper">
-        <!--swiper模板-->
-        <script type="text/template" id="swiperBanner">
-            {{each swiperList as item index}}
-            <div class="swiper-slide swiper-item click-swiper-item ios-cursor" data-detailid="{{item.detailId}}">
-                <img class="swiper-img" src="{{item.img}}">
+	</head>
+	<body>
+		<!--整体结构-->
+		<div class="e_layout">
+			<div style="display: none;">
+				<img src="https://img.bazhuay.com/common/images/2018/10/kuaidibanner01_20181023165156.png" alt="">
+				<img src="https://img.bazhuay.com/common/images/2018/10/banners_20181022170202.png" alt="">
+			</div>
+			<!--顶部-->
+			<div class="e_head">
+				<h1>快递直通车</h1>
+			</div>
+			<!--<div class="e_adver">-->
+			<!--<div class="fr adverBtn">-->
+			<!--<a href="http://120.132.49.13:7777/towx.html">点击前往</a>-->
+			<!--<button class="btn" data-clipboard-text="快递直通车">复制名称</button>-->
+			<!--</div>-->
+			<!--</div>-->
+			<!--查询框-->
+			<div class="e_query">
+				<div class="e_img">
+					<img src="./img/car.png" alt="">
+				</div>
+				<div class="e_entry">
+					<div class="e_box fl">
+						<input class="expre_put" type="number" placeholder="请输入快递单号或扫码查询">
+						<i class="iconfont icon-saoma"></i>
+					</div>
+					<button class="fr" id="expre_btn">查询</button>
+				</div>
+			</div>
+			<!--三颗球-->
+			<div class="theBall">
+				<ul class="clearfix">
+					<li>
+						<a href="" id="shuangshiyi">
+							<img src="https://img.bazhuay.com/common/images/2018/10/11_20181024152149.png" alt="">
+							<p>双十一</p>
+						</a>
+					</li>
+					<li>
+						<a href="" id="chuanyi">
+							<img src="https://img.bazhuay.com/common/images/2018/10/chuanyi_20181024152215.png" alt="">
+							<p>穿衣搭配</p>
+						</a>
+					</li>
+					<li>
+						<a href="https://temai.m.taobao.com/search.htm?pid=mm_110931422_14594899_47507050034">
+							<img src="https://img.bazhuay.com/common/images/2018/10/youhuiq_20181024152205.png" alt="">
+							<p>优惠券</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="goods click-showcopywx">
+				<div class="item flex flex-sb">
+					<img class="img" src="https://img.bazhuay.com/yptm/images/2019/4/10832478332_1179041682.640x640_1556179955238.jpg?imageView2/2/h/200/interlace/1/format/jpg"
+					 alt="">
+					<div class="content flex flex-column flex-sb">
+						<div class="top">
+							<div class="title ell2">汽车遮阳挡 自动伸缩 防晒隔热</div>
+							<div class="buy-num">已有2w+人购买</div>
+							<div class="tag">
+								<span class="span">极速退款</span>
+								<span class="span span1">包邮</span>
+							</div>
+						</div>
+						<div class="bottom">
+							<div class="price-view flex">
+								<div class="price1">￥395.00</div>
+								<!-- <div class="price2">拼单提现￥{{item.zhekoujia}}</div> -->
+							</div>
+							<div class="buy-btn">立即拼单 ￥0.01</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-view">
+				<div class="modal-save">
+					<img class="img" id="qrImg" src="https://img.bazhuay.com/common/images/2019/06/a_20190617151907.png">
+					<a class="btn-save" href="https://img.bazhuay.com/common/images/2019/06/a_20190617151907.png" download="qrcodeimg.png">
+						一键保存图片
+					</a>
+				</div>
+			</div>
+
+
+			<!--<div class="e_list">-->
+			<!--<ul id="eListbox">-->
+			<!--<li>-->
+			<!--<i class="iconfont icon-dingwei"></i>-->
+			<!--<p>站点查询</p>-->
+			<!--</li>-->
+			<!--<li>-->
+			<!--<i class="iconfont icon-shizhong"></i>-->
+			<!--<p>时效查询</p>-->
+			<!--</li>-->
+			<!--</ul>-->
+			<!--</div>-->
+			<!--查找返回来的信息-->
+			<div class="e_info">
+				<div class="e_show">
+					<!--<div class="e_tit">-->
+					<!--<a href="#">-->
+					<!--<div class="boxExpre">-->
+					<!--<div class="fl">-->
+					<!--<img class="imgs_ex" src="" alt="">-->
+					<!--<span>百事快递</span>-->
+					<!--</div>-->
+					<!--<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+					<!--<span class="fr">2018-05-14</span>-->
+					<!--</div>-->
+					<!--<div class="numbersExpre">-->
+					<!--<p>单号:888888</p>-->
+					<!--<p>状态:888888</p>-->
+					<!--</div>-->
+					<!--</a>-->
+
+					<!--</div>-->
+
+
+				</div>
+			</div>
+
+			<!--遮罩层以及弹窗-->
+			<div class="e_jump">
+				<div class="jumBox">
+					<h4>跳转提示</h4>
+					<p>跳转小程序可执行更多的操作哦~</p>
+					<div class="jumBtn">
+						<button>留在此页</button>
+						<a href="http://120.132.49.13:7777/towx.html">跳转</a>
+					</div>
+				</div>
+			</div>
+			<!--提示框-->
+			<div class="prompt"></div>
+
+			<!--弹出盒子-->
+			<div class="e_popup">
+				<ul id="popup_box">
+				</ul>
+				<p id="e_cancel"><span>取消</span></p>
+			</div>
+
+			<!--<div class="layer_mask">-->
+			<!--<div class="layer_box">-->
+			<!--<img class="circle" src="https://img.bazhuay.com/common/images/2018/10/quan_20181012143547.png" alt="">-->
+			<!--<img class="hognbao" src="https://img.bazhuay.com/common/images/2018/10/homes_20181022170115.png">-->
+			<!--<img id="lucksBtn" class="receive yptms" data-clipboard-text="yptm12"-->
+			<!--src="https://img.bazhuay.com/common/images/2018/10/lijilingqu_20181022170457.png" alt="">-->
+			<!--<img class="close_layer" src="https://img.bazhuay.com/common/images/2018/10/close_20181018174729.png"-->
+			<!--alt="">-->
+			<!--</div>-->
+			<!--</div>-->
+
+			<div class="xuanfu yptms" id="xuanfuBtns" data-clipboard-text="yptm12">
+				<img src="https://img.bazhuay.com/common/images/2018/10/xuanfu_20181022131758.png" alt="">
+			</div>
+
+			<!--<div class="e_bottom">-->
+			<!--<button id="loadApp" style="background-color: #FF5B3A">下载APP拿红包</button>-->
+			<!--<a class="linkLuck" href="https://www.yipintemian.com/newsguess/view/2.0/yptm_buy/lucks.html?dist=kuaidi" style="background-color: #FFA000">抽奖100%中奖</a>-->
+			<!--</div>-->
+			<!--360安全认证-->
+			<div class="securityBox">
+				<img src="https://img.bazhuay.com/common/images/2018/09/securityTo_20180926120134.png?imageView2/2/w/500" alt="">
+			</div>
+			<!--ios公众号关注弹窗-->
+			<div class="ios_layer">
+				<div class="ios_box">
+					<img class="close_ios" src="https://img.bazhuay.com/common/images/2018/10/close_20181019154607.png" alt="">
+					<div>
+						<h3>已复制公众号名称</h3>
+						<p>请前往微信关注我们喔~</p>
+					</div>
+					<button onclick="window.location.href='weixin://'">现在就去关注</button>
+				</div>
+			</div>
+
+			<!--客服弹窗-->
+			<!--<div class="customerPopup">-->
+			<!--<div class="customerBox">-->
+			<!--<div class="cusTit">-->
+			<!--<h3>如何添加微信客服号</h3>-->
+			<!--</div>-->
+			<!--<div class="cusCont">-->
+			<!--<div class="cusText">-->
+			<!--<p class="serweixin">已帮你复制客服微信号<span class="yptms" data-clipboard-text="yptm12">yptm12</span>，打开微信添加好友，如图：-->
+			<!--</p>-->
+			<!--</div>-->
+			<!--<img class="proces"-->
+			<!--src="https://img.bazhuay.com/common/images/2018/10/kefutanchuang_20181023124420.png?imageView2/2/w/300"-->
+			<!--alt="">-->
+			<!--<a href="weixin://">去微信添加</a>-->
+			<!--</div>-->
+			<!--<img class="closeCustomer" src="https://img.bazhuay.com/common/images/2018/09/closeCus_20180905111725.png"-->
+			<!--alt="">-->
+			<!--</div>-->
+			<!--</div>-->
+
+		</div>
+
+		<script type="text/html" id="tit_tpl">
+			{{each tit_list as tit}}
+    <div class="e_tit">
+        <a href="./details.html?type={{tit.com}}&postid={{tit.nu}}">
+            <div class="boxExpre">
+                <div class="fl">
+                    <img class="imgs_ex" src="https://cdn.kuaidi100.com/images/all/56/{{tit.com}}.png" alt="">
+                    <span>{{tit.comName}}</span>
+                </div>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class="fr">{{tit.Date}}</span>
             </div>
-            {{/each}}
-        </script>
-    </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-</div>
-
-<!-- 体质选择 -->
-<div flex="main:justify cross:center" class="filter" id="filter">
-    <div id="physique">全部体质</div>
-    <i class="iconfont  icon-xiangyou icon-down"></i>
-</div>
-
-<!-- 体质选择弹窗 -->
-<div class="picker-view" id="picker-view">
-    <div flex="main:justify cross:center" class="picker-op">
-        <div flex="main:center cross:center" class="cancel" id="cancel">取消</div>
-        <div flex="main:center cross:center" class="sure" id="sure">确定</div>
-    </div>
-    <div class="picker">
-        <div class="physique-swiper">
-            <div class="physique-swiper-item physique-swiper-item-on">全部体质</div>
-            <div class="physique-swiper-item">阴虚体质</div>
-            <div class="physique-swiper-item">气郁体质</div>
-            <div class="physique-swiper-item">淤血体质</div>
-            <div class="physique-swiper-item">湿热体质</div>
-            <div class="physique-swiper-item">痰湿体质</div>
-            <div class="physique-swiper-item">阳虚体质</div>
-            <div class="physique-swiper-item">气虚体质</div>
-            <div class="physique-swiper-item">平和体质</div>
-        </div>
-    </div>
-</div>
-
-<!-- food -->
-<div flex="main:justify cross:center" class="food-view flex-wrap" id="foodListView"></div>
-<!--食谱列表模版 -->
-<script type="text/template" id="foodList">
-    {{each foodList as item index}}
-    <div flex="dir:top main:justify cross:center" class="food click-food ios-cursor" data-id="{{item.id}}">
-        <div class="physique">{{item.physique}}</div>
-        <img src="{{item.bannerUrl}}" class="image" alt="">
-        <div class="title">{{item.cname}}</div>
-        <div class="tag ell2">{{item.effect}}</div>
+            <div class="numbersExpre">
+                <p>单号&nbsp;:&nbsp;{{tit.nu}}</p>
+                <p>状态&nbsp;:&nbsp;{{tit.context}}</p>
+            </div>
+        </a>
     </div>
     {{/each}}
 </script>
-
-<!-- 到底了 -->
-<div class="no-more">—— 没有更多了 ——</div>
-
-<div class="blank-view"></div>
-</body>
-
-</html>
-
-<script type="text/javascript" src="https://static.8guess.com/js/swiper.min.js"></script>
-<script type="text/javascript" src="https://static.8guess.com/js/template.js"></script>
-<script src="./js/jacky.js"></script>
-<script src="./js/base.js"></script>
-<script type="text/javascript">
-    var page = {
-        preCate: 0,
-        pickPhysique: "",
-        moreLoading: true,//加载数据中
-        foodParams: {
-            physique: "",
-            pageSize: 20,
-            pageNum: 1,
-            cid: ''
-        }
-    }
-
-    Jacky.util.landscape({color: '#e02e24'});
-
-    $(function () {
-        console.debug(111, history)
-        console.debug(111, document.referrer)
-        init()
-        // 滚动加载数据
-        $(window).scroll(function () {
-            var b = $(window).scrollTop(),
-                c = $(document).height() - $(window).height()
-            if (c - b < 300 && !page.moreLoading) {
-                closeLoad()
-                console.debug('加载中...')
-                page.foodParams.pageNum += 1
-                getFood()
-            }
-        });
-
-    });
-
-    function init() {
-        // 获取分类
-        getCate()
-        // 获取Banner
-        getBanner()
-    }
-
-    // 获取分类
-    function getCate() {
-        $.ajax({
-            url: config.baseUrl + "/tongue/intf/tongue/getCookBookCates.jsp",
-            type: "POST",
-            success: function (res) {
-                console.debug('类目==', res)
-                var data = res.data
-                var html = template('tabBar', {tabList: data})
-                $("#tabbar-view").append(html);
-                $('.tabbar-item').first().addClass('tabbar-item-on')
-                page.foodParams.cid = data[0].id
-                getFood()
-            }
-        });
-    }
-
-    // 获取Banner
-    function getBanner() {
-        $.ajax({
-            url: config.baseUrl + "/tongue/intf/tongue/getMaterials.jsp",
-            type: "POST",
-            data: {adsenseId: "A00107d3755e7c614afaab80bd74e388f3c6"},
-            success: function (res) {
-                console.debug('Banner==', res)
-                var data = res.data
-                if (data.length > 0) {
-                    for (let i = 0; i < data.length; i++) {
-                        if (data[i].path) {
-                            data[i].detailId = getQueryParams(data[i].path)['id']
-                        }
-                    }
-                }
-                var html = template('swiperBanner', {swiperList: data});
-                $("#swiperWrapper").append(html);
-                var banner = new Swiper('#swiperContainer', {
-                    loop: 4000,
-                    autoplay: true,
-                    pagination: {
-                        el: '.swiper-pagination',
-                    },
-                    lazy: {
-                        loadPrevNext: true,
-                    }
-                });
-            }
-        });
-    }
-
-    // 获取食谱
-    function getFood() {
-        Jacky.util.pageLoad.show();
-        $.ajax({
-            url: config.baseUrl + "/tongue/intf/tongue/getCookBooks.jsp",
-            type: "POST",
-            data: page.foodParams,
-            success: function (res) {
-                console.debug('食谱==', res)
-                Jacky.util.pageLoad.remove();
-                var data = res.data
-                if (res.data.length > 0) {
-                    openLoad()
-                    var html = template('foodList', {foodList: data});
-                    $("#foodListView").append(html);
-                } else {
-                    $('.no-more').show()
-                    page.foodParams.pageNum -= 1
-                }
-            }
-        });
-    }
-
-
-    // 切换tabbar
-    $('#tabbar-view .click-tab').live('click', function (e) {
-        if (page.preCate == $(this).attr("data-index")) {
-            return 0;
-        }
-
-        console.debug($(this).attr("data-index"), $(this).attr("data-id"))
-        page.preCate = $(this).attr("data-index")
-        page.foodParams.cid = $(this).attr("data-id")
-        $(this).find('.tabbar-item').addClass('tabbar-item-on')
-        $(this).siblings().find('.tabbar-item').removeClass('tabbar-item-on')
-
-        $('.no-more').hide()
-        openLoad()
-        $("#foodListView").empty()
-        getFood()
-    })
-
-    // 查看详情
-    $('#foodListView .click-food').live('click', function (e) {
-        window.location.href = './foodInfo.html?id=' + $(this).attr("data-id")
-    })
-
-    // 查看详情   banner
-    $('#swiperWrapper .click-swiper-item').live('click', function (e) {
-        if ($(this).attr("data-detailid")) {
-            window.location.href = './foodInfo.html?id=' + $(this).attr("data-detailid")
-        }
-    })
-
-    // 打开选择体质弹窗
-    $('#filter').on('click', function () {
-        $('#picker-view').show()
-    })
-
-    // 选择体质
-    $('.physique-swiper-item').on('click', function (e) {
-        console.debug($(this).text())
-        if ($(this).text() == '全部体质') {
-            page.pickPhysique = ''
-        } else {
-            page.pickPhysique = $(this).text()
-        }
-        $(this).addClass('physique-swiper-item-on').siblings().removeClass('physique-swiper-item-on')
-    })
-
-    // 取消选择
-    $('#cancel').on('click', function () {
-        $('#picker-view').hide()
-    })
-
-
-    // 确定选择
-    $('#sure').on('click', function () {
-        page.foodParams.physique = page.pickPhysique
-        $('#physique').text(page.foodParams.physique)
-        $('#picker-view').hide()
-        $('.no-more').hide()
-        openLoad()
-        $("#foodListView").empty()
-        getFood()
-    })
-
-    // 开启加载更多
-    function openLoad() {
-        page.moreLoading = false
-    }
-
-    // 关闭加载更多
-    function closeLoad() {
-        page.moreLoading = true
-    }
-
-
+		<script type="text/html" id="popup_tpl">
+			{{each popup_list as popup}}
+    <li data-text="{{popup.comCode}}"><span>{{popup.comName}}</span></li>
+    {{/each}}
 </script>
+		<script src="./js/jquery-1.11.3.min.js"></script>
+		<script src="./js/jquery.cookie.js"></script>
+		<script src="./js/font-resize.js"></script>
+		<script src="./js/company.js"></script>
+		<script src="./js/template.js"></script>
+		<script src="./js/coms.js"></script>
+		<script src="https://static.8guess.com/js/clipboard-1.js"></script>
+		<script>
+			var u = navigator.userAgent,
+				app = navigator.appVersion;
+			var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+			var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+
+			if (isiOS) {
+				$("#shuangshiyi").attr("href", "https://b.akeyn.com/xmlkey/baidu/news/query.html?q=双十一");
+				$("#chuanyi").attr("href", "https://b.akeyn.com/xmlkey/baidu/news/query.html?q=穿衣搭配%20时尚");
+			} else {
+				$("#shuangshiyi").attr("href", "https://cpu.baidu.com/1081/b481f5e2?query=双十一&scid=16574");
+				$("#chuanyi").attr("href", "https://cpu.baidu.com/1081/b481f5e2?query=穿衣搭配%20时尚&scid=16574");
+			}
+
+
+			//设置时间
+			if (!$.cookie("kuaiditime")) {
+				$.cookie("kuaiditime", new Date().getTime(), 9999);
+			}
+
+			var days = new Date().getTime();
+			var getTime = days - $.cookie("kuaiditime");
+			var time = getTime / 86400000;
+			console.log(days);
+			console.log($.cookie("kuaiditime"));
+			console.log(time);
+			//判断时间小于3
+			if (time > 3) {
+				$(".xuanfu").show();
+			} else {
+				if (!$.cookie("kuaidishow")) {
+					$(".layer_box").addClass("animate_layer_box")
+					$(".layer_mask").show();
+					$.cookie("kuaidishow", 1, 1);
+				} else {
+					$(".layer_mask").hide();
+					$(".xuanfu").show();
+					// $.cookie("lotteryshow", "", 0);
+				}
+			}
+			//ios弹窗公众号关闭按钮
+			$(".close_ios").click(function() {
+				$(".ios_layer").hide();
+			});
+			//ios关闭客服号按钮
+			$(".closeCustomer").click(function() {
+				$(".customerPopup").hide();
+			});
+			//首次弹窗关闭按钮
+			$(".close_layer").click(function() {
+				$(".layer_mask").hide();
+				$(".xuanfu").show();
+			});
+
+			$("#expre_btn").on('click', function() {
+				var exre_put = $(".expre_put").val();
+				if (exre_put == '') {
+					Prompt(".prompt", "请输入正确的单号");
+					return false;
+				}
+				//560255250012
+				$.ajax({
+					type: 'get',
+					url: 'https://reptile.akeyn.com/users/getcompany',
+					data: {
+						text: exre_put
+					},
+					success: function(data) {
+						var popup_arr = [];
+						var das = JSON.parse(data);
+						$.each(das.auto, function(i, item) {
+							popup_arr.push({
+								comCode: item.comCode,
+								noCount: item.noCount,
+								noPre: item.noPre,
+								comName: expressCompany(item.comCode),
+							});
+						});
+						var popup_html = template('popup_tpl', {
+							popup_list: popup_arr
+						});
+						$("#popup_box").html(popup_html);
+						$(".e_mask").show();
+						$(".e_popup").show();
+
+						$("#popup_box > li").on('click', function() {
+							var texts = $(this).data("text");
+							$.ajax({
+								type: 'get',
+								url: 'https://reptile.akeyn.com/users/query',
+								data: {
+									type: texts,
+									postid: exre_put
+								},
+								success: function(data) {
+									var results = JSON.parse(data);
+									console.log(results);
+									if (results.status == "200") {
+										$(".expre_put").val('');
+										$(".e_mask").hide();
+										$(".e_popup").hide();
+										window.location.href = "./details.html?type=" + texts + "&postid=" + exre_put;
+									} else {
+										alert('无此快递信息');
+									}
+								}
+							});
+						});
+					}
+				});
+			});
+
+			//下载APP拿红包的事件
+			$("#xuanfuBtns").on('click', function() {
+				if (isAndroid) {
+					if (flag) {
+						flag = false;
+						$(".securityBox").fadeIn('normal', function() {
+							flag = true;
+						});
+						setTimeout(function() {
+							$(".securityBox").fadeOut('normal', function() {
+								flag = true;
+							});
+						}, 1500);
+					}
+					setTimeout(function() {
+						window.location.href = "https://apks.yipintemian.com/yptm.apk";
+					}, 2000);
+					_hmt.push(['_trackEvent', "快递直通车", "左悬浮下载APP13.5"]);
+				} else {
+					new ClipboardJS('.yptms');
+					$(".customerPopup").show();
+				}
+			});
+			//右悬浮按钮
+			$("#linkLuck").on('click', function() {
+				_hmt.push(['_trackEvent', "快递直通车", "右悬浮按钮抽奖100%中奖"]);
+			});
+
+			//    首次弹窗立即抽奖
+			$("#lucksBtn").click(function() {
+				if (isAndroid) {
+					if (flag) {
+						flag = false;
+						$(".securityBox").fadeIn('normal', function() {
+							flag = true;
+						});
+						setTimeout(function() {
+							$(".securityBox").fadeOut('normal', function() {
+								flag = true;
+							});
+						}, 1500);
+					}
+					setTimeout(function() {
+						window.location.href = "https://apks.yipintemian.com/yptm.apk";
+					}, 2000);
+					_hmt.push(['_trackEvent', "快递直通车", "首次弹窗立即抽奖"]);
+				} else {
+					new ClipboardJS('.yptms');
+					$(".customerPopup").show();
+				}
+			});
+
+			//    首次弹窗关闭按钮
+			$(".close_layer").click(function() {
+				$(".layer_box").hide();
+			});
+
+
+			var expre_data = window.localStorage.getItem("expre_data");
+
+			if (expre_data != null) {
+				expre_data = JSON.parse(expre_data);
+				var html = template('tit_tpl', {
+					tit_list: expre_data
+				});
+				$(".e_show").html(html);
+			}
+
+			//点击隐藏盒子和遮罩层
+			$("#e_cancel,.e_mask").on('click', function() {
+				$(".e_mask").hide();
+				$(".e_popup").hide();
+			});
+
+			//    $("#eListbox > li,.icon-saoma").on('click', function () {
+			//        $(".e_mask").show();
+			//        $(".e_jump").show();
+			//    });
+
+			$(".jumBtn>button:first-of-type").on('click', function() {
+				$(".e_mask").hide();
+				$(".e_jump").hide();
+			});
+
+
+			// 打开复制链接弹窗
+			$('.click-showcopywx').on('click', function() {
+				$('.modal-view').show()
+			})
+
+			// 复制链接
+			$('.click-saveimg').on('click', function() {
+// 				$('.modal-view').hide()
+// 				var img = document.querySelector('#qrImg')
+// 				var url = img.src
+// 				var a = document.createElement('a')
+// 				var event = new MouseEvent('click')
+// 				a.download = name || 'qrcodeimg'
+// 				a.href = url
+// 				a.dispatchEvent(event)
+			})
+		</script>
+		<!-- cpu feeds block -->
+		<div class="cpu-feeds-block" data-site-id="275013455" data-block-id="18113"></div>
+		<script>
+			(function() {
+				var url = "//cu.baidu.com";
+				var getEntry = function() {
+					var script = document.createElement("script");
+					script.id = "cpu-block-entry";
+					script.src = url + "/js/cb.js";
+					var scriptTag = document.getElementsByTagName("script")[0];
+					scriptTag.parentNode.insertBefore(script, scriptTag)
+				};
+				var sentMsg = function(e) {
+					var msg = {
+						msg: e.toString() || "no err msg",
+						line: e.lineno || -1
+					};
+					var img = document.createElement("img");
+					img.src = url + "/msg?m=block&e=" +
+						encodeURIComponent(JSON.stringify(msg))
+				};
+				try {
+					window.feedsbycpu = window.feedsbycpu || [];
+					window.feedsbycpu.push({
+						siteId: "275013455",
+						blockId: "18113",
+						display: "auto",
+						rightImageList: 'true',
+						titleFontWeight: 'normal'
+					});
+					document.getElementById("cpu-block-entry") || getEntry()
+				} catch (e) {
+					sentMsg(e)
+				}
+			})();
+		</script>
+		<!-- cpu feeds block end-->
+	</body>
+</html>

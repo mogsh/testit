@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="name=Jacky"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>快递直通车</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/details.css?v=3">
+    <!--百度统计-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?a6be558a8704efc43a8853e49eb2d40d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<!--整体结构-->
+<div class="e_layout">
+
+    <!--顶部-->
+    <div class="e_head">
+        <h1>快递直通车</h1>
+    </div>
+    <!--三颗球-->
+    <div class="theBall">
+        <ul class="clearfix">
+            <li>
+                <a href="" id="shuangshiyi">
+                    <img src="https://img.bazhuay.com/common/images/2018/10/11_20181024152149.png" alt="">
+                    <p>双十一</p>
+                </a>
+            </li>
+            <li>
+                <a href="" id="chuanyi">
+                    <img src="https://img.bazhuay.com/common/images/2018/10/chuanyi_20181024152215.png" alt="">
+                    <p>穿衣搭配</p>
+                </a>
+            </li>
+            <li>
+                <a href="https://temai.m.taobao.com/search.htm?pid=mm_110931422_14594899_47507050034">
+                    <img src="https://img.bazhuay.com/common/images/2018/10/youhuiq_20181024152205.png" alt="">
+                    <p>优惠券</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="e_contont">
+        <div class="e_box">
+            <div class="e_saide">
+                <img id="expre_img" src="" alt="">
+                <p id="expre_name"></p>
+                <p id="e_cour"></p>
+            </div>
+            <ul class="e_list" id="expre_box">
+                <!--快递信息的坑-->
+            </ul>
+        </div>
+    </div>
+
+    <!--悬浮领钱-->
+    <div class="xuanfu yptms" id="xuanfuBtns" data-clipboard-text="yptm12">
+        <img src="https://img.bazhuay.com/common/images/2018/10/xuanfu_20181022131758.png" alt="">
+    </div>
+
+    <!--ios公众号关注弹窗-->
+    <div class="ios_layer">
+        <div class="ios_box">
+            <img class="close_ios" src="https://img.bazhuay.com/common/images/2018/10/close_20181019154607.png" alt="">
+            <div>
+                <h3>已复制公众号名称</h3>
+                <p>请前往微信关注我们喔~</p>
+            </div>
+            <button onclick="window.location.href='weixin://'">现在就去关注</button>
+
+        </div>
+    </div>
+
+    <!--客服弹窗-->
+    <div class="customerPopup">
+        <div class="customerBox">
+            <div class="cusTit">
+                <h3>如何添加微信客服号</h3>
+            </div>
+            <div class="cusCont">
+                <div class="cusText">
+                    <p class="serweixin">已帮你复制客服微信号<span class="yptms" data-clipboard-text="yptm12">yptm12</span>，打开微信添加好友，如图：
+                    </p>
+                </div>
+                <img class="proces"
+                     src="https://img.bazhuay.com/common/images/2018/10/kefutanchuang_20181023124420.png?imageView2/2/w/300"
+                     alt="">
+                <a href="weixin://">去微信添加</a>
+            </div>
+            <img class="closeCustomer" src="https://img.bazhuay.com/common/images/2018/09/closeCus_20180905111725.png"
+                 alt="">
+        </div>
+    </div>
+
+    <!--<div class="e_bottom">-->
+    <!--<button id="loadApp" style="background-color: #FF5B3A">下载APP拿红包</button>-->
+    <!--<a id="linkLuck" href="https://www.yipintemian.com/newsguess/view/2.0/yptm_buy/lucks.html?dist=kuaidi"-->
+    <!--style="background-color: #FFA000">抽奖100%中奖</a>-->
+    <!--</div>-->
+    <!--360安全认证-->
+    <div class="securityBox">
+        <img src="https://img.bazhuay.com/common/images/2018/09/securityTo_20180926120134.png?imageView2/2/w/500"
+             alt="">
+    </div>
+</div>
+<script type="text/html" id="expre_tpl">
+    {{each expre_list as expre}}
+    <li>
+        <p>{{expre.context}}</p>
+        <p>{{expre.time}}</p>
+    </li>
+    {{/each}}
+</script>
+<script src="./js/jquery-1.11.3.min.js"></script>
+<script src="./js/font-resize.js"></script>
+<script src="./js/company.js"></script>
+<script src="./js/template.js"></script>
+<script src="./js/coms.js"></script>
+<script src="https://static.8guess.com/js/clipboard-1.js"></script>
+<script>
+
+    var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    var type = GetQueryString("type");
+    var postid = GetQueryString("postid");
+
+
+    if (isiOS) {
+        $("#shuangshiyi").attr("href", "https://b.akeyn.com/xmlkey/baidu/news/query.html?q=双十一");
+        $("#chuanyi").attr("href", "https://b.akeyn.com/xmlkey/baidu/news/query.html?q=穿衣搭配%20时尚");
+    } else {
+        $("#shuangshiyi").attr("href", "https://cpu.baidu.com/1081/b481f5e2?query=双十一&scid=16574");
+        $("#chuanyi").attr("href", "https://cpu.baidu.com/1081/b481f5e2?query=穿衣搭配%20时尚&scid=16574");
+    }
+    //快递信息接口渲染
+    $.ajax({
+        type: 'get',
+        url: 'https://reptile.akeyn.com/users/query',
+        data: {
+            type: type,
+            postid: postid
+        },
+        success: function (data) {
+            var result = JSON.parse(data);
+            console.log(result);
+            if (result.status == 200) {
+                $("#expre_img").attr("src", "https://cdn.kuaidi100.com/images/all/56/" + result.com + ".png");
+                $("#expre_name").text(expressCompany(result.com));
+                $("#e_cour").text(result.nu);
+
+                var expre_html = template('expre_tpl', {expre_list: result.data});
+                $("#expre_box").html(expre_html);
+
+                var arrs = window.localStorage.getItem("expre_data");
+
+                arrs = JSON.parse(arrs);
+
+                if (arrs == null) {
+                    arrs = [];//loacalStory拿数组 [];
+                }
+                arrs.push({
+                    context: result.data[0].context,
+                    time: result.data[0].time,
+                    Date: GetDateStr(0),
+                    nu: result.nu,
+                    com: result.com,
+                    comName: expressCompany(result.com)
+                });
+
+                var Duparr = uniqeByKeys(arrs, ['nu']);
+                console.log(Duparr);
+
+                var str = JSON.stringify(Duparr);
+                window.localStorage.setItem('expre_data', str);
+
+            }
+        }
+    });
+
+
+    //下载APP拿红包的事件
+    $("#xuanfuBtns").on('click', function () {
+        if (isAndroid) {
+            if (flag) {
+                flag = false;
+                $(".securityBox").fadeIn('normal', function () {
+                    flag = true;
+                });
+                setTimeout(function () {
+                    $(".securityBox").fadeOut('normal', function () {
+                        flag = true;
+                    });
+                }, 1500);
+            }
+            setTimeout(function () {
+                window.location.href = "https://apks.yipintemian.com/yptm.apk";
+            }, 2000);
+            _hmt.push(['_trackEvent', "快递直通车", "左悬浮下载APP13.5"]);
+        } else {
+            new ClipboardJS('.yptms');
+            $(".customerPopup").show();
+        }
+    });
+    //ios弹窗公众号关闭按钮
+    $(".close_ios").click(function () {
+        $(".ios_layer").hide();
+    });
+    //ios弹窗客服号关闭按钮
+    $(".closeCustomer").click(function () {
+        $(".customerPopup").hide();
+    });
+
+    //右悬浮按钮
+    $("#linkLuck").on('click', function () {
+        _hmt.push(['_trackEvent', "快递直通车", "右悬浮按钮抽奖100%中奖"]);
+    });
+
+
+</script>
+<!-- cpu feeds block -->
+<div class="cpu-feeds-block" data-site-id="275013455"
+     data-block-id="18113"></div>
+<script>
+    (function () {
+        var url = "//cu.baidu.com";
+        var getEntry = function () {
+            var script = document.createElement("script");
+            script.id = "cpu-block-entry";
+            script.src = url + "/js/cb.js";
+            var scriptTag = document.getElementsByTagName("script")[0];
+            scriptTag.parentNode.insertBefore(script, scriptTag)
+        };
+        var sentMsg = function (e) {
+            var msg = {
+                msg: e.toString() || "no err msg",
+                line: e.lineno || -1
+            };
+            var img = document.createElement("img");
+            img.src = url + "/msg?m=block&e="
+                + encodeURIComponent(JSON.stringify(msg))
+        };
+        try {
+            window.feedsbycpu = window.feedsbycpu || [];
+            window.feedsbycpu.push({
+                siteId: "275013455",
+                blockId: "18113",
+                display: "auto",
+                rightImageList: 'true',
+                titleFontWeight: 'normal'
+            });
+            document.getElementById("cpu-block-entry") || getEntry()
+        } catch (e) {
+            sentMsg(e)
+        }
+    })();
+</script>
+<!-- cpu feeds block end-->
+</body>
+</html>
