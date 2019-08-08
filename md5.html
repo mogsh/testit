@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>AES</title>
+		<style type="text/css">
+			input {
+				width: 360px;
+				color: #606266;
+				font-size: inherit;
+				font-family: inherit;
+				background-color: #f1f3f4;
+				padding: 0.35em 0.45em;
+				border: 1px solid transparent;
+				transition: background-color 0.3s ease-in-out;
+				border-radius: 2px;
+				box-sizing: border-box;
+			}
+
+			input:focus {
+				outline: none;
+			}
+
+			input::placeholder {
+				color: #babcbe;
+			}
+
+			span {
+				position: absolute;
+				background-color: #fc1d64;
+				transition: transform 0.5s ease;
+			}
+
+			.input-bottom,
+			.input-top {
+				height: 1px;
+				left: 0;
+				right: 0;
+				transform: scaleX(0);
+			}
+
+			.input-left,
+			.input-right {
+				width: 1px;
+				top: 0;
+				bottom: 0;
+				transform: scaleY(0);
+			}
+
+			.input-bottom {
+				bottom: 0;
+				transform-origin: bottom right;
+			}
+
+			input:focus~.input-bottom {
+				transform-origin: bottom left;
+				transform: scaleX(1);
+			}
+
+			.input-right {
+				right: 0;
+				transform-origin: top right;
+			}
+
+			input:focus~.input-right {
+				transform-origin: bottom right;
+				transform: scaleY(1);
+			}
+
+			.input-top {
+				top: 0;
+				transform-origin: top left;
+			}
+
+			input:focus~.input-top {
+				transform-origin: top right;
+				transform: scaleX(1);
+			}
+
+			.input-left {
+				left: 0;
+				transform-origin: bottom left;
+			}
+
+			input:focus~.input-left {
+				transform-origin: top left;
+				transform: scaleY(1);
+			}
+
+			.input-view {
+				position: relative;
+				display: block;
+				width: 360px;
+			}
+
+			button {
+				z-index: 1;
+				position: relative;
+				font-size: inherit;
+				font-family: inherit;
+				color: white;
+				padding: 0.5em 1em;
+				outline: none;
+				border: none;
+				background-color: #409eff;
+				overflow: hidden;
+				cursor: pointer;
+				border-radius: 4px;
+				width: 360px;
+			}
+
+			button::after {
+				content: '';
+				z-index: -1;
+				background-color: hsla(0, 0%, 100%, 0.2);
+				position: absolute;
+				top: -50%;
+				bottom: -50%;
+				width: 4.0em;
+				transform: translate3d(-525%, 0, 0) rotate(35deg);
+			}
+
+			button:hover::after {
+				transition: transform 0.45s ease-in-out;
+				transform: translate3d(200%, 0, 0) rotate(35deg);
+			}
+
+			.mt20 {
+				margin-top: 20px;
+			}
+
+			.m-auto {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			.block {
+				display: block;
+			}
+
+			.default-key-btn {
+				position: fixed;
+				z-index: 1;
+				width: 20px;
+				height: 20px;
+				top: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="default-key-btn"></div>
+		<div class="input-view m-auto">
+			<input id="string" type="text" placeholder="string">
+			<span class="input-bottom"></span>
+			<span class="input-right"></span>
+			<span class="input-top"></span>
+			<span class="input-left"></span>
+		</div>
+		<div class="input-view mt20 m-auto">
+			<input id="key" type="text" placeholder="key">
+			<span class="input-bottom"></span>
+			<span class="input-right"></span>
+			<span class="input-top"></span>
+			<span class="input-left"></span>
+		</div>
+		<button id="encrypt" class="block m-auto mt20" type="button"> encrypt </button>
+		<button id="decrypt" class="block m-auto mt20" type="button" style="background-color: #e6a23c;"> decrypt </button>
+		<div class="input-view mt20 m-auto">
+			<input id="result" type="text" placeholder="result">
+			<span class="input-bottom"></span>
+			<span class="input-right"></span>
+			<span class="input-top"></span>
+			<span class="input-left"></span>
+		</div>
+		<button id="copy" data-clipboard-target="#result" class="block m-auto mt20" type="button" style="background-color: #67c23a;">
+			copy value </button>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+		<script src="./md5.js"></script>
+		<script>
+			$(function() {
+				var eleString = $('#string'),
+					eleResult = $('#result'),
+					eleKey = $('#key'),
+					eleEncrypt = $('#encrypt'),
+					eleDecrypt = $('#decrypt'),
+					eleCopy = $('#copy'),
+					string = '',
+					key = '',
+					result = '';
+
+				var clipboard = new ClipboardJS('#copy');
+
+				function encrypt(s, k) {
+					return CryptoJS.AES.encrypt(s, k).toString()
+				}
+
+				function decrypt(s, k) {
+					return CryptoJS.AES.decrypt(s, k).toString(CryptoJS.enc.Utf8)
+				}
+
+				function getResult(res) {
+					eleResult.val(res)
+				}
+
+				eleEncrypt.on('click', function() {
+					key = eleKey.val()
+					string = eleString.val()
+					result = encrypt(string, key)
+					getResult(result)
+				})
+
+				eleDecrypt.on('click', function() {
+					key = eleKey.val()
+					string = eleString.val()
+					result = decrypt(string, key)
+					getResult(result)
+				})
+
+				$('.default-key-btn').on('click', function() {
+					var key = decrypt('U2FsdGVkX19nXT2xWniwTme8NFH6kpYQctHVIDkbJ2I', '')
+					eleKey.val(key)
+				})
+
+				clipboard.on('success', function(e) {
+					console.info('Text:', e.text);
+					alert('copy success!')
+				});
+			})
+		</script>
+	</body>
+</html>
