@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Wyy七夕快乐哦~</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!--<meta itemprop="image" content="./images/fenxiang.png" />-->
-    <style>
-        html {
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Wyy七夕快乐哦~</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<!--<meta itemprop="image" content="./images/fenxiang.png" />-->
+		<style>
+			html {
             height: 100%;
         }
         body {
@@ -84,22 +84,22 @@
         }
     </style>
 
-</head>
+	</head>
 
-<body>
-<!--更改为你女朋友的头像-->
-<div class="cs">
-    <img src="./001.png" id="logo">
-</div>
-<canvas class="canvas" width="1820" height="905"></canvas>
-<!-- <p class="text" style="color: #ed3073;">
+	<body>
+		<!--更改为你女朋友的头像-->
+		<div class="cs">
+			<img src="./001.png" id="logo">
+		</div>
+		<canvas class="canvas" width="1820" height="905"></canvas>
+		<!-- <p class="text" style="color: #ed3073;">
     We fell in love
     <br/>
     <span id="span_dt_dt"></span>
 </p> -->
 
-<script language="javascript">
-    function show_date_time() {
+		<script language="javascript">
+			function show_date_time() {
         window.setTimeout("show_date_time()", 1000);
         BirthDay = new Date("2/20/2018 00:00:00");//这个日期是可以修改的
         today = new Date();
@@ -118,8 +118,8 @@
     }
     show_date_time();
 </script>
-<script>
-    var S = {
+		<script>
+			var S = {
         init: function () {
             S.Drawing.init('.canvas');
             document.body.classList.add('body--ready');
@@ -128,7 +128,7 @@
             S.Drawing.loop(function () {
                 S.Shape.render();
             });
-			var imgsEle = document.getElementById('logo'),imgs = ['./001.png','./002.png','./003.png'],i=-1;
+			var imgsEle = document.getElementById('logo'),imgs = ['https://tva3.sinaimg.cn/large/a4ef6b4agy1g8g3tx09ptj20dw0dwwpz.jpg','https://tva2.sinaimg.cn/large/a4ef6b4agy1g8g3sgeb8lj20cs0cstcy.jpg','https://tva1.sinaimg.cn/large/a4ef6b4agy1g8g3u2027pj20eg0egn3s.jpg'],i=-1;
 			setInterval(function(){
 				i++
 				if(i> imgs.length -1){
@@ -587,8 +587,8 @@
     }());
     S.init();
 </script>
-<audio autoplay="autoplay" loop="loop">
-    <source src="./sbwyy.mp3" type="audio/mpeg">
-</audio>
-</body>
+		<audio autoplay="autoplay" loop="loop">
+			<source src="./sbwyy.mp3" type="audio/mpeg">
+		</audio>
+	</body>
 </html>
