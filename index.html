@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>www.testit.top</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="index.css" />
+	<!-- <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script> -->
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<fieldset v-for="(item, index) in navigatorList" :id="item.meta.id" :key='item.meta.id'
+			:style="item.meta.styleObj">
+			<legend>{{item.title}}</legend>
+			<a class="a-link" v-for="(ele, nth) in item.data" :title='ele.desc' :href="ele.url" target="_blank"><img
+					class="a-icon" :src="ele.icon">{{ele.name}}</a>
+		</fieldset>
+	</div>
+
+	<script src="index.js"></script>
+</body>
+
+</html>
