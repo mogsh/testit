@@ -9,6 +9,12 @@ const navigatorList = [
     },
     data: [
       {
+        name: "Polyfill.io",
+        url: "https://cdn.polyfill.io/v3/url-builder",
+        desc: "",
+        icon: "https://cdn.polyfill.io/v3/favicon-32x32.55811c1a.png"
+      },
+      {
         name: "微信公众平台",
         url: "https://mp.weixin.qq.com",
         desc: "",
